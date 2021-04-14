@@ -74,10 +74,7 @@ namespace ITM.DB.CEBC.Api
             //swagger
             app.UseMvc();
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CEBC API V1");
-            });
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CEBC API V1"));
             //end swagger
 
             app.UseHttpsRedirection();

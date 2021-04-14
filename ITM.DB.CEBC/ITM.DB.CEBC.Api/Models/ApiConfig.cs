@@ -7,16 +7,33 @@ namespace ITM.DB.CEBC.Api.Models
 {
     public class ApiConfig
     {
-        private decimal annualInterestRate = 5.00m;
-        private string interestCalculatedInSpan = "Monthly";
-        private decimal administrationFeePercent = 1.00m;
-        private decimal administrationFeeAmount = 10000m;
+        private decimal annualInterestRate = Consts.APPCFG_AnnualInterestRate_DEFAULT;
+        private string interestCalculatedInSpan = Consts.APPCFG_InterestCalculatedInSpan_DEFAULT;
+        private decimal administrationFeePercent = Consts.APPCFG_AdministrationFeePercent_DEFAULT;
+        private decimal administrationFeeAmount = Consts.APPCFG_AdministrationFeeAmount_DEFAULT;
 
-        public decimal AnnualInterestRate { get => annualInterestRate; set => annualInterestRate = value; }
-        public string InterestCalculatedInSpan { get => interestCalculatedInSpan; set => interestCalculatedInSpan = value; }
+        public decimal AnnualInterestRate
+        {
+            get => annualInterestRate; 
+            set => annualInterestRate = value;
+        }
 
-        public decimal AdministrationFeePercent { get => administrationFeePercent; set => administrationFeePercent = value; }
-        public decimal AdministrationFeeAmount { get => administrationFeeAmount; set => administrationFeeAmount = value; }
+        public string InterestCalculatedInSpan 
+        { 
+            get => interestCalculatedInSpan; 
+            set => interestCalculatedInSpan = value; 
+        }
 
+        public decimal AdministrationFeePercent 
+        { 
+            get => administrationFeePercent; 
+            set => administrationFeePercent = value; 
+        }
+
+        public decimal AdministrationFeeAmount 
+        { 
+            get => administrationFeeAmount; 
+            set => administrationFeeAmount = value; 
+        }
     }
 }
