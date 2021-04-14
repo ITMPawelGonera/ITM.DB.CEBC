@@ -35,7 +35,7 @@ namespace ITM.DB.CEBC.Api.Logic
             return m;
         }
 
-        private int CalcTotalDuration(int durationYears, int durationMonths)
+        public int CalcTotalDuration(int durationYears, int durationMonths)
         {
             return (durationYears * 12) + durationMonths;
         }
@@ -52,13 +52,14 @@ namespace ITM.DB.CEBC.Api.Logic
         {
             decimal yearlyInterestRate = config.AnnualInterestRate / 100m;
             decimal monthlyInterestRate = yearlyInterestRate / 12m;
-            decimal outstandingBalance = loan.Amount;
+            decimal outstandingBalance = loan.Amount + loan.TotalFee;
+            decimal monthlyPayment = (outstandingBalance / loan.DurationTotalMonths);
             decimal totalInterest = 0m;
             while (outstandingBalance > 0m)
             {
                 decimal monthlyInterestValue = outstandingBalance * monthlyInterestRate;
-                decimal monthlyPrincipalValue = (loan.Amount / loan.DurationTotalMonths) - monthlyInterestValue;
-                outstandingBalance -= monthlyPrincipalValue;
+                decimal monthlyPrincipalValue = monthlyPayment - monthlyInterestValue;
+                outstandingBalance -= monthlyPayment;
                 totalInterest += monthlyInterestValue;
             }
             return totalInterest;
